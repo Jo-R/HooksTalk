@@ -14,16 +14,22 @@ https://reactjs.org/docs/hooks-overview.html
  - React is just fxs calling fxs so classes are a bit outside that model
  - allegdly 'this' is hard (but are closures harder?)
 
- From the hooks rfc:
- The main motivation is that patterns like closures naturally creates copies of values which makes writing concurrent code a lot easier because you can store n number of states at any given point instead of just one in the case of a mutable class. This avoids a number of foot guns where classes seem intuitive but actually yield unpredictable results.
+From the hooks rfc:
+The main motivation is that patterns like closures naturally creates copies of values which makes writing concurrent code a lot easier because you can store n number of states at any given point instead of just one in the case of a mutable class. This avoids a number of foot guns where classes seem intuitive but actually yield unpredictable results.
 https://github.com/reactjs/rfcs/pull/68
 
-## Aside - quick reminder re closures
-- maybe show the EXAMPLE from overreacted showing closures getting right result but mutable this getting wrong one? something like that
-https://codesandbox.io/s/pjqnl16lm7
+my version of the exmaple from https://overreacted.io/how-are-function-components-different-from-classes/ showing closures getting right result but "mutable this" getting wrong one
+https://codesandbox.io/s/hooks-talk-classes-and-functions-difference-8i7yj
+
+maybe show the class one first and then the correct function one? 
+
+"This exposes an interesting observation about the nature of user interfaces. If we say that a UI is conceptually a function of current application state, the event handlers are a part of the render result — just like the visual output. Our event handlers “belong” to a particular render with particular props and state.
+
+However, scheduling a timeout whose callback reads this.props breaks that association. Our showMessage callback is not “tied” to any particular render, and so it “loses” the correct props. Reading from this severed that connection."
 
 ## What?
 - ootb hooks > what the rules of hooks tell us about how they work
+
 ![](hooksInOneTweet.png)
 
 - write your own hooks
@@ -32,12 +38,11 @@ https://codesandbox.io/s/pjqnl16lm7
 
 There is a linter rule npm package for this
 
-- only call hooks from react fxs not regular js - this one is pretty easy :-)
+- only call hooks from react fxs not regular js - this one is pretty easy 😊
 - only call hooks at the top level: don't call them inside loops, conditions or nested functions
-     - call order cf its an array (or linked list) stuff
-     https://codesandbox.io/s/simple-implementation-of-hooks-zwwd5
+     - call order cf its an array (or linked list) stuff  https://codesandbox.io/s/izqhl
 - most common sighting of linter warnings: missing dependencies in useEffect 
-    - need to find an EXAMPLE of this and why it matters
+    - need to find an EXAMPLE of this and why it matters...wip https://codesandbox.io/s/hooks-talk-useeffect-and-dependencies-c1b1c 
     - functions/ref equality and solutions to that
 
 ## Write your own hooks
