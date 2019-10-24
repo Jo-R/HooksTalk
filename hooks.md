@@ -12,8 +12,11 @@ https://reactjs.org/docs/hooks-overview.html
 - less verbose - example
 - less repetition/keep code that belongs together together, not spread over several lifecycle methods (and conversely, don't have unrelated code within a single lifecycle method) - include in the same example
 - more composable - no more hoc (wrapper hell)
-- React is just fxs calling fxs so classes are a bit outside that model
 - allegdly 'this' is hard (but are closures harder?)
+
+![](obligatoryClosuresMemeTweet.png)
+
+- React is just fxs calling fxs so classes are a bit outside that model
 
 From the hooks rfc:
 The main motivation is that patterns like closures naturally creates copies of values which makes writing concurrent code a lot easier because you can store n number of states at any given point instead of just one in the case of a mutable class. This avoids a number of foot guns where classes seem intuitive but actually yield unpredictable results.
@@ -41,11 +44,12 @@ There is a linter rule npm package for this
 - only call hooks from react fxs not regular js - this one is pretty easy 😊
 - only call hooks at the top level: don't call them inside loops, conditions or nested functions
   - call order cf its an array (or linked list) stuff https://codesandbox.io/s/izqhl
+  - SO WHAT AM I GONNA SAY AOUT THIS?
 - most common sighting of linter warnings: missing dependencies in useEffect - quote some stuff from the docs here as well probably
   - https://codesandbox.io/s/hooks-talk-useeffect-and-dependencies-c1b1c
   - so we move the set timeout to useEffect since we want to run it once state has actually changed
   - and if we have no dependencies it works
-  - but I don't want to run it every render, just after word has changed -> we don't get anything happen when the props also change
+  - but I don't want to run it every render, just after word has changed -> we don't get anything happen when the props also change so we get the wrong message
   - so we either:
     - add the function as a dep and wrap in useCallback
     - move the function inside useEffect
