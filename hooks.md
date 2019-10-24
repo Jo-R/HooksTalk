@@ -1,11 +1,13 @@
+"Hooks are functions that let you “hook into” React state and lifecycle features from function components."
+https://reactjs.org/docs/hooks-overview.html
+
 Hook released 6/2/19 no breaking changes, can keep doing what you've always done and just explore hooks...
 
 First use in Optix: refresh button commited on 13/2
 
 We went with hooks early and I've not seen a class in a new commit for ages
 
-"Hooks are functions that let you “hook into” React state and lifecycle features from function components."
-https://reactjs.org/docs/hooks-overview.html
+Apollo, formik have or are(?) bringing out versions that use hooks...adoption has been quick...
 
 ## Why?
 
@@ -33,7 +35,7 @@ However, scheduling a timeout whose callback reads this.props breaks that associ
 
 ## What?
 
-- ootb hooks > what the rules of hooks tell us about how they work
+- ootb hooks
 
 ![](hooksInOneTweet.png)
 
@@ -46,14 +48,18 @@ There is a linter rule npm package for this
   - call order cf its an array (or linked list) stuff https://codesandbox.io/s/izqhl
   - SO WHAT AM I GONNA SAY AOUT THIS?
 - most common sighting of linter warnings: missing dependencies in useEffect - quote some stuff from the docs here as well probably
+
   - https://codesandbox.io/s/hooks-talk-useeffect-and-dependencies-c1b1c
   - so we move the set timeout to useEffect since we want to run it once state has actually changed
   - and if we have no dependencies it works
   - but I don't want to run it every render, just after word has changed -> we don't get anything happen when the props also change so we get the wrong message
   - so we either:
+
     - add the function as a dep and wrap in useCallback
     - move the function inside useEffect
     - (or lift it out the component is another solution)
+
+  - think about effects as synchronising the UI rather than as part of a lifecycle
 
 ## Write your own hooks
 
