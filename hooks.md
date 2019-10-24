@@ -20,6 +20,7 @@ https://github.com/reactjs/rfcs/pull/68
 
 ## Aside - quick reminder re closures
 - maybe show the EXAMPLE from overreacted showing closures getting right result but mutable this getting wrong one? something like that
+https://codesandbox.io/s/pjqnl16lm7
 
 ## What?
 - ootb hooks > what the rules of hooks tell us about how they work
@@ -28,13 +29,13 @@ https://github.com/reactjs/rfcs/pull/68
 - write your own hooks
 
 ## The rules of hooks
-?cover talking through some of the ootb hooks here?
 
 There is a linter rule npm package for this
 
 - only call hooks from react fxs not regular js - this one is pretty easy :-)
 - only call hooks at the top level: don't call them inside loops, conditions or nested functions
      - call order cf its an array (or linked list) stuff
+     https://codesandbox.io/s/simple-implementation-of-hooks-zwwd5
 - most common sighting of linter warnings: missing dependencies in useEffect 
     - need to find an EXAMPLE of this and why it matters
     - functions/ref equality and solutions to that
