@@ -35,6 +35,11 @@ However, scheduling a timeout whose callback reads this.props breaks that associ
 
 And if we think like Dan: "I like to think of React elements as being like frames in a movie. They capture what the UI should look like at a specific point in time. They don’t change." https://overreacted.io/react-as-a-ui-runtime/ then this mental model starts to make even more sense...
 
+I wanna say soemthign about rendering and reconciliation and elements/components/instances somewhere in this initial why seciont?
+
+https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html
+
+
 ## What?
 
 - ootb hooks
@@ -69,3 +74,4 @@ There is a linter rule npm package for this
 - need an EXAMPLE and maybe compare to how would do if using classes?
   - formik or apollo have a look at their hooks?
   - useHooks site?
+  - what about useTheme() instead of styled ocmponenet hoc and needing to pass theme in as a prop?? or something...
