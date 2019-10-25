@@ -33,6 +33,8 @@ maybe show the class one first and then the correct function one?
 
 However, scheduling a timeout whose callback reads this.props breaks that association. Our showMessage callback is not “tied” to any particular render, and so it “loses” the correct props. Reading from this severed that connection."
 
+And if we think like Dan: "I like to think of React elements as being like frames in a movie. They capture what the UI should look like at a specific point in time. They don’t change." https://overreacted.io/react-as-a-ui-runtime/ then this mental model starts to make even more sense...
+
 ## What?
 
 - ootb hooks
@@ -59,7 +61,7 @@ There is a linter rule npm package for this
     - move the function inside useEffect
     - (or lift it out the component is another solution)
 
-  - think about effects as synchronising the UI rather than as part of a lifecycle
+  - think about effects as synchronising the UI rather than as responding to lifecycle events https://overreacted.io/a-complete-guide-to-useeffect/
 
 ## Write your own hooks
 
