@@ -68,6 +68,10 @@ There is a linter rule npm package for this
 
   - think about effects as synchronising the UI rather than as responding to lifecycle events https://overreacted.io/a-complete-guide-to-useeffect/
 
+
+  - an example of useCallback was Email input focus issue: another component (email known) was rerendering because of callbacks being passed down as props -> that getting
+  the focus so the issue was prevented by wrapping those in useCallback
+
 ## Write your own hooks
 
 - resuse stateful behaviour between components
