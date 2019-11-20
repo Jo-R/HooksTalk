@@ -71,6 +71,7 @@ There is a linter rule npm package for this
 
   - an example of useCallback was Email input focus issue: another component (email known) was rerendering because of callbacks being passed down as props -> that getting
   the focus so the issue was prevented by wrapping those in useCallback
+  - it was also breaking debounce...check username executing for every letter, fx needed wrappingin useCallback so wasn't actually a different fx
 
 ## Write your own hooks
 
