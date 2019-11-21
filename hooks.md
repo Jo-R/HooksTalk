@@ -5,9 +5,7 @@ https://reactjs.org/docs/hooks-overview.html
 
 Hook released 6/2/19 no breaking changes, can keep doing what you've always done and just explore hooks...
 
-First use in Optix: refresh button commited on 13/2
-
-We went with hooks early and I've not seen a class in a new commit for ages
+First use in Optix: refresh button committed on 13/2
 
 Apollo, formik have or are(?) bringing out versions that use hooks...adoption has been quick...
 
