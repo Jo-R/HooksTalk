@@ -26,7 +26,7 @@ https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html
 
 From the hooks rfc:
 The main motivation is that patterns like closures naturally creates copies of values which makes writing concurrent code a lot easier because you can store n number of states at any given point instead of just one in the case of a mutable class. This avoids a number of foot guns where classes seem intuitive but actually yield unpredictable results.
-https://github.com/reactjs/rfcs/pull/68
+https://github.com/reactjs/rfcs/pull/68#issuecomment-439314884
 
 And if we think like Dan: "I like to think of React elements as being like frames in a movie. They capture what the UI should look like at a specific point in time. They don’t change." https://overreacted.io/react-as-a-ui-runtime/ then this mental model starts to make even more sense...
 
@@ -54,7 +54,7 @@ There is a linter rule npm package for this: warn not error
 - only call hooks from react fxs not regular js - this one is pretty easy 😊
 - only call hooks at the top level: don't call them inside loops, conditions or nested functions
   - call order cf its an array (or linked list) stuff https://codesandbox.io/s/izqhl
-  - SO WHAT AM I GONNA SAY AOUT THIS?
+  - SO WHAT AM I GONNA SAY AOUT THIS? https://overreacted.io/why-do-hooks-rely-on-call-order/
 - most common sighting of linter warnings: missing dependencies in useEffect - quote some stuff from the docs here as well probably
 
   - https://codesandbox.io/s/hooks-talk-useeffect-and-dependencies-c1b1c NEED TO IMPROVE THIS EXAMPLE CURRENTLY SUCKS
