@@ -52,11 +52,12 @@ think about effects as synchronising the UI rather than as responding to lifecyc
 There is a linter rule npm package for this: warn not error
 
 - only call hooks from react fxs not regular js - this one is pretty easy 😊
+
 - only call hooks at the top level: don't call them inside loops, conditions or nested functions
   - call order cf its an array (or linked list) stuff https://codesandbox.io/s/izqhl
-  - SO WHAT AM I GONNA SAY AOUT THIS? https://overreacted.io/why-do-hooks-rely-on-call-order/
-- most common sighting of linter warnings: missing dependencies in useEffect - quote some stuff from the docs here as well probably
+  -  https://overreacted.io/why-do-hooks-rely-on-call-order/ and https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e
 
+- most common sighting of linter warnings: missing dependencies in useEffect - quote some stuff from the docs here as well probably and https://reacttraining.com/blog/when-to-use-functions-in-hooks-dependency-array/??
   - https://codesandbox.io/s/hooks-talk-useeffect-and-dependencies-c1b1c NEED TO IMPROVE THIS EXAMPLE CURRENTLY SUCKS
   - so we move the set timeout to useEffect since we want to run it once state has actually changed
   - and if we have no dependencies it works
@@ -67,6 +68,7 @@ There is a linter rule npm package for this: warn not error
     - move the function inside useEffect
     - (or lift it out the component is another solution)
 
+  -  useCallback https://kentcdodds.com/blog/usememo-and-usecallback
   - an example of useCallback was Email input focus issue: another component (email known) was rerendering because of callbacks being passed down as props -> that getting
     the focus so the issue was prevented by wrapping those in useCallback
   - it was also breaking debounce...check username executing for every letter, fx needed wrappingin useCallback so wasn't actually a different fx
@@ -74,7 +76,4 @@ There is a linter rule npm package for this: warn not error
 ## Write your own hooks (back to the what?)
 
 - resuse stateful behaviour between components https://codesandbox.io/s/usewindowwidth-z924w eg window resize and the rules of hooks apply here too because they are composed of other hooks (see text component)
-- need an EXAMPLE and maybe compare to how would do if using classes?
-  - formik or apollo have a look at their hooks?
-  - useHooks site?
-  - what about useTheme() instead of styled ocmponenet hoc and needing to pass theme in as a prop?? or something...
+- apollo hooks
