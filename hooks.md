@@ -44,6 +44,8 @@ think about effects as synchronising the UI rather than as responding to lifecyc
 ## What?
 
 - ootb hooks
+- probably main one this doesn't metnion is useContext to access context values
+- prize for whoever manages to use useImpreativeHandle
 
 ![](hooksInOneTweet.png)
 
@@ -56,24 +58,26 @@ There is a linter rule npm package for this: warn not error
 - only call hooks at the top level: don't call them inside loops, conditions or nested functions
   - call order cf its an array (or linked list) stuff https://codesandbox.io/s/izqhl
   -  https://overreacted.io/why-do-hooks-rely-on-call-order/ and https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e
+  - you can kinda see this bu how your useState values appear in dev tools - they are just in order with no name
 
 - most common sighting of linter warnings: missing dependencies in useEffect - quote some stuff from the docs here as well probably and https://reacttraining.com/blog/when-to-use-functions-in-hooks-dependency-array/??
-  - https://codesandbox.io/s/hooks-talk-useeffect-and-dependencies-c1b1c NEED TO IMPROVE THIS EXAMPLE CURRENTLY SUCKS
-  - so we move the set timeout to useEffect since we want to run it once state has actually changed
-  - and if we have no dependencies it works
-  - but I don't want to run it every render, just after word has changed -> we don't get anything happen when the props also change so we get the wrong message
-  - so we either:
+    - other hooks have dep arrays but it seems to be useEffect that causes the most issues
+    - by default it runs every render so you need the dep array to stop this
+    - [] runs on mount but if you;re using any state/props values you can't leave it empty as its return would possibly be invalid if those change
+    - the need to include functions causes the most issues and confusion - usually in the form of infinite loop / 'y tho?': handlers/functionas also belong to a particular render and are captured along with the props/state values
 
-    - add the function as a dep and wrap in useCallback
-    - move the function inside useEffect
-    - (or lift it out the component is another solution)
 
-  -  useCallback https://kentcdodds.com/blog/usememo-and-usecallback
+  -  useCallback
+  - as well as those instances where it fixes useEffect bugs
   - an example of useCallback was Email input focus issue: another component (email known) was rerendering because of callbacks being passed down as props -> that getting
     the focus so the issue was prevented by wrapping those in useCallback
   - it was also breaking debounce...check username executing for every letter, fx needed wrappingin useCallback so wasn't actually a different fx
 
 ## Write your own hooks (back to the what?)
 
-- resuse stateful behaviour between components https://codesandbox.io/s/usewindowwidth-z924w eg window resize and the rules of hooks apply here too because they are composed of other hooks (see text component)
+- resuse stateful behaviour between components and the implementation of hooks as a linked list as described earlier was very much geared around allowing for this
+- https://codesandbox.io/s/usewindowwidth-z924w eg window resize and the rules of hooks apply here too because they are composed of other hooks (see text component)
 - apollo hooks
+  - the examples actually look pretty similar but it is an advantage not to have to have the data wrapped in another component
+  - useLazyQuerylets you control when executed..a bit like useMutaiton it returns a tuple so you can have a named funtion to call
+
